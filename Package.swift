@@ -14,7 +14,7 @@ let package = Package(
         .target(
             name: "UIEmptyState",
             path: "src/UIEmptyState",
-            publicHeadersPath: ".",
+            publicHeadersPath: "."
         )
     ]
 )
