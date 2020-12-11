@@ -18,7 +18,7 @@ private extension UILabel {
         let maxSize = CGSize(width: width, height: .greatestFiniteMagnitude)
         
         #if swift(>=4.0)
-            let attrString = NSAttributedString(string: txt, attributes: [.font: self.font])
+            let attrString = NSAttributedString(string: txt, attributes: [.font: self.font as Any])
         #else
             let attrString = NSAttributedString(string: txt, attributes: [NSFontAttributeName: self.font])
         #endif
@@ -253,7 +253,7 @@ open class UIEmptyStateView: UIView {
         contentView.axis = .vertical
         contentView.distribution = .equalSpacing
         contentView.alignment = .center
-        contentView.backgroundColor = UIColor.red
+        contentView.backgroundColor = .clear
         contentView.spacing = spacing ?? 0
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addArrangedSubview(titleLabel)
@@ -270,7 +270,7 @@ open class UIEmptyStateView: UIView {
     private func handleAdding(view: UIView) {
         // The order we want is 1. Image View, 2. Title Label, 3. Detail Label, 4. Button
         // If already added we can return
-        if contentView.subviews.index(of: view) != nil { return }
+        if contentView.subviews.firstIndex(of: view) != nil { return }
         
         // Tags correspond to the views AND the order we want them in
         switch view.tag {
